@@ -1,0 +1,1 @@
+It's a training project. It takes the necessary data from a xls-file (full name and birthday), truncates full name to surname only and writes it all to a txt-file.
