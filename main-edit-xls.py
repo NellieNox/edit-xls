@@ -12,6 +12,11 @@ f = open('C:\\Users\\Nellie\\dev\\edit-xls\\text.txt', 'w')
 while (sheet.cell_value(row_num, 2) != ''):     # перебираем данные, пока не наткнёмся на пустую ячейку. Второй параметр = 2, т.к. нужен столбец С
     birthday = datetime.datetime(*xlrd.xldate_as_tuple(sheet.cell_value(row_num, 3), book.datemode))    # получаем дату рождения и преобразуем из float в datetime
     full_name = sheet.cell_value(row_num, 2).split()
+    if (' '.join(full_name), birthday) not in mas_data:
+        mas_data.append((' '.join(full_name), birthday))
+    else:
+        row_num = row_num + 1
+        continue
     f.write(full_name[0] + ',' + birthday.strftime("%d.%m.%Y") + '\n')
     row_num = row_num + 1       # переходим на другую строку
 
